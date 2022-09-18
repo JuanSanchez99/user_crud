@@ -26,6 +26,28 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => [
+                'regex:/^([^0-9]*)$/',
+                'max:100',
+                'min:5',
+            ],
+            'lastname' => [
+                'regex:/^([^0-9]*)$/',
+                'max:100',
+            ],
+            'email' => [
+                'email:rfc,dns',
+                'max:150',
+            ],
+            'address' => [
+                'max:180',
+            ],
+            'phone' => [
+                'numeric',
+                'size:10',
+            ],
+        ]);
         $customer = Customer::create($request->all());
         UserCreated::dispatch($customer);
         return $customer;
