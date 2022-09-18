@@ -44,7 +44,7 @@ class CustomerController extends Controller
                 'max:180',
             ],
             'phone' => [
-                'numeric',
+                'regex:/^[0-9]*$/',
                 'size:10',
             ],
         ]);
