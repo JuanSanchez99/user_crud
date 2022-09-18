@@ -17,10 +17,11 @@ class CreateCustomersTable extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('lastname', 100);
-            $table->string('email', 150);
+            $table->string('number_id', 11)->unique();
+            $table->string('email', 150)->unique();
             $table->string('country');
             $table->string('address', 180);
-            $table->string('phone', 10);
+            $table->string('phone', 14);
             // Relations
             $table->integer('category_id');
             $table->timestamps();
