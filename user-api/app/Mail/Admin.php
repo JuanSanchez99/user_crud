@@ -28,6 +28,9 @@ class Admin extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.admin');
+        return $this
+            ->to(env('ADMIN_EMAIL'))
+            ->subject("Registro App")
+            ->view('emails.admin');
     }
 }
